@@ -5,11 +5,14 @@ has_gun = False
 has_knife = False
 has_spanner = False
 is_ded = False
-guard_ko = False
+fubar = False
+
+##Sets the starting room
 current_room = "prison"
 
 ##Introduce the Story to the player
-print("Behind the Lines")
+print("Behind The Lines")
+time.sleep(0.5)
 print("You've just woken up from another day in the brig of the enemy POW base,\nbut today is like no other, as you see that someone has left the cell doors unlocked.")
 print("After exiting your cell,")
 while is_ded != True:   
@@ -130,9 +133,9 @@ while is_ded != True:
         is_ded = True
     if current_room == "fuel_plant":
       ##3 choices, nothing can be done here
-      print("You head to the nexus of the fuel plant,\nand see that you could head to the refinery, the port or the tank farm.")
+      print("You head to the nexus of the fuel plant,\nand see that you could head to the refinery or the port.")
       print("What would you like to do?")
-      print("Actions Available: Refinery, Port, Tanks")
+      print("Actions Available: Refinery, Port, Tanks, Backward")
       action = input(">>> ").lower()
       if action == "refinery":
         print("You head towards the refinery.")
@@ -140,9 +143,9 @@ while is_ded != True:
       elif action == "port":
         print("You head towards the port.")
         current_room = "port"
-      elif action == "tanks":
-        print("You head towards the tank farm.")
-        current_room = "tank_farm"
+      elif action == "backward":
+          print("You head back to the prison block.")
+          current_room = "prison"
     if current_room == "port":
       print("You enter the port, and see an oil tanker docked at the port.")
       print("Do you want to board it?\nYes/No")
@@ -179,34 +182,42 @@ while is_ded != True:
                 print("You Died")
                 is_ded = True
     if current_room == "tanker":
-        print("You have boarded the tanker right as it left port, and see the bridge to your right, the stairwell to the engine room to your left, and the lifeboats in front of you.")
-        print("What would you like to do?")
-        print("Actions Available: Forward, Left, Right, Look")
-        action = input(">>> ").lower()
-        if action == "look":
-            print("You are on a moving oil tanker.")
-            if has_spanner == False:
-              print("You see a spanner lying on the deck")
-              print("Do you pick it up?\nYes/No")
-              action = input(">>> ").lower
-              if action == "yes":
-                  print("You pick up the spanner")
-                  has_spanner = True
-              elif action == "no":
-                  print("You leave the spanner on the deck.")
-        elif action == "forward":
-            print("You get into one of the lifeboats, and start to put it over the side.\nThe seas begin to swell slightly and the lifeboat falls off its mountings.\nIt falls into the water, with you in it.")
-            time.sleep(1)
-            print("You get the motor turning and head towards friendly shores.")
-            time.sleep(1)
-            print("You Survived")
-            is_ded = True
-        elif action == "left":
-            print("You head down to the engine room.")
-            current_room = "engine"
-        elif action == "right":
-            print("You head to the bridge.")
-            current_room = "bridge"
+       if fubar == False:
+          print("You have boarded the tanker right as it left port, and see the bridge to your right, the stairwell to the engine room to your left, and the lifeboats in front of you.")
+          print("What would you like to do?")
+          print("Actions Available: Forward, Left, Right, Look")
+          action = input(">>> ").lower()
+          if action == "look":
+              print("You are on a moving oil tanker.")
+              if has_spanner == False:
+                print("You see a spanner lying on the deck")
+                print("Do you pick it up?\nYes/No")
+                action = input(">>> ").lower
+                if action == "yes":
+                    print("You pick up the spanner")
+                    has_spanner = True
+                elif action == "no":
+                    print("You leave the spanner on the deck.")
+          elif action == "forward":
+              print("You get into one of the lifeboats, and start to put it over the side.\nThe seas begin to swell slightly and the lifeboat falls off its mountings.\nIt falls into the water, with you in it.")
+              time.sleep(1)
+              print("You get the motor turning and head towards friendly shores.")
+              time.sleep(1)
+              print("You Survived")
+              is_ded = True
+          elif action == "left":
+              print("You head down to the engine room.")
+              current_room = "engine"
+          elif action == "right":
+              print("You head to the bridge.")
+              current_room = "bridge"
+       else:
+          print("As you head back up to the top deck, you can see that a fire has broken out aboard the ship.")
+          time.sleep(1)
+          print("The allied navy comes over to assist, and you make your way over to one of their ships.")
+          time.sleep(1)
+          print("You Survived")
+          is_ded = True
     if current_room == "bridge":
         print("You approach the bridge, and you can see people within.")
         print("What would you like to do?")
@@ -238,12 +249,41 @@ while is_ded != True:
                 time.sleep(1)
                 print("You Died")
     if current_room == "engine":
-        print("You enter the engine room.")
         print("You see the bilge access to your right, and the engine management console to your left.")
         print("What would you like to do?")
-        print("Actions Available: Right, Left, Look.")
+        print("Actions Available: Right, Left, Look, Backward.")
         action = input(">>> ").lower()
         if action == "look":
             print("You are within the engine room of the tanker.")
         elif action == "left":
             print("You head over the the engine management console.")
+            print("You have no idea what these buttons do, but you hit them anyway.")
+            print("You hear an alarm go off nearby, and decide that its high time to get out of the engine room.")
+            time.sleep(1)
+            fubar = True
+            current_room = "tanker"
+        elif action == "right":
+            print("You head to the bilge access.")
+            print("As you head to the hatch, one of the crewmembers see you, and as you peer into the bilge, he shoves you into it.")
+            print("You have no way out, and slowly drown.")
+            time.sleep(1)
+            print("You Died")
+            is_ded = True
+        elif action == "backward":
+            print("You head back up to the top deck.")
+            current_room = "tanker"
+    if current_room == "refinery":
+        print("You see the hydrocarbon cracking column to your left, the control room to your right, and a Jeep in front of you.")
+        print("What would you like to do?")
+        print("Actions Available: Left, Forward, Right, Look, Backward.")
+        action = input(">>> ").lower()
+        if action == "backward":
+            print("You head back to the Nexus")
+            current_room = "fuel_plant"
+        elif action == "forward":
+            print("You hop in the Jeep, and see that the ignition switch is still primed.")
+            time.sleep(1)
+            print("You flee towards the horizon, and towards a friendly base.")
+            time.sleep(1)
+            print("You Survived")
+            is_ded = True
