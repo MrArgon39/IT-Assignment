@@ -5,6 +5,7 @@ has_gun = False
 has_knife = False
 has_spanner = False
 is_ded = False
+guard_ko = False
 current_room = "prison"
 
 ##Introduce the Story to the player
@@ -178,9 +179,71 @@ while is_ded != True:
                 print("You Died")
                 is_ded = True
     if current_room == "tanker":
-        print("You have boarded the tanker, and see the bridge to your right, the stairwell to the engine room to your left, and the lifeboats in front of you.")
+        print("You have boarded the tanker right as it left port, and see the bridge to your right, the stairwell to the engine room to your left, and the lifeboats in front of you.")
         print("What would you like to do?")
         print("Actions Available: Forward, Left, Right, Look")
         action = input(">>> ").lower()
         if action == "look":
             print("You are on a moving oil tanker.")
+            if has_spanner == False:
+              print("You see a spanner lying on the deck")
+              print("Do you pick it up?\nYes/No")
+              action = input(">>> ").lower
+              if action == "yes":
+                  print("You pick up the spanner")
+                  has_spanner = True
+              elif action == "no":
+                  print("You leave the spanner on the deck.")
+        elif action == "forward":
+            print("You get into one of the lifeboats, and start to put it over the side.\nThe seas begin to swell slightly and the lifeboat falls off its mountings.\nIt falls into the water, with you in it.")
+            time.sleep(1)
+            print("You get the motor turning and head towards friendly shores.")
+            time.sleep(1)
+            print("You Survived")
+            is_ded = True
+        elif action == "left":
+            print("You head down to the engine room.")
+            current_room = "engine"
+        elif action == "right":
+            print("You head to the bridge.")
+            current_room = "bridge"
+    if current_room == "bridge":
+        print("You approach the bridge, and you can see people within.")
+        print("What would you like to do?")
+        print("Actions available: Forward, Backward, Look.")
+        action = input(">>> ").lower()
+        if action == "look":
+            print("You are on the exterior bridge wing.")
+        elif action == "backward":
+            current_room = "tanker"
+            print("You head back to the main deck of the tanker.")
+        elif action == "forward":
+            print("You enter the bridge.")
+            if has_spanner == True:
+                print("You knock out the radio operator using the spanner, and begin to send a message to your allies.")
+                if has_gun == True:
+                    print("As his shipmates come around the corner, you begin to incapcitate them with your pistol.")
+                    time.sleep(1)
+                    print("Your allies fly in with a chopper and extract you from the tanker.")
+                    time.sleep(1)
+                    print("You Survived")
+                    is_ded = True
+                else:
+                    print("As his shipmates come around the corner, you are discovered.\nThe captain throws you over the side.")
+                    time.sleep(1)
+                    print("You Died")
+                    is_ded = True
+            else:
+                print("The radio operator discovers you, and shoves you off of the bridge, and you fall into the water.")
+                time.sleep(1)
+                print("You Died")
+    if current_room == "engine":
+        print("You enter the engine room.")
+        print("You see the bilge access to your right, and the engine management console to your left.")
+        print("What would you like to do?")
+        print("Actions Available: Right, Left, Look.")
+        action = input(">>> ").lower()
+        if action == "look":
+            print("You are within the engine room of the tanker.")
+        elif action == "left":
+            print("You head over the the engine management console.")
