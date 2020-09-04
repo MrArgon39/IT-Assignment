@@ -336,7 +336,7 @@ while is_ded != True:
                 print("You Survived")
                 is_ded = True
             else:
-                print("A worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+                print("The worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
                 print("You Died")
                 is_ded = True
         elif action == "backward":
