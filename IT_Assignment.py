@@ -17,7 +17,7 @@ print("You've just woken up from another day in the brig of the enemy POW base,\
 print("After exiting your cell,")
 while is_ded != True:   
     if current_room == "prison":
-      print("You see the base armoury to your left, the fuel plant to the right, and the base exit infront of you.")
+      print("You see the base armoury to your left, the fuel plant to the right, and the base exit in front of you.")
       print("What would you like to do?")
       print("Actions Available: Forward, Left, Right, Look")
       action = input(">>> ").lower()
@@ -32,7 +32,7 @@ while is_ded != True:
          ##The head toward the exit of the base
          current_room = "base_exit"
       elif action == "look":
-         print("You are in the depths of enemy territory")
+         print("You are in the depths of enemy territory.")
     if current_room == "armoury":
       ##Everyting that happens within the Armoury
       print("You enter the armoury, and see the door to the machine shop lying ajar, and a spot where you could plant charges.")
@@ -132,10 +132,10 @@ while is_ded != True:
         print("If this doesn't look right, expand the code window so that it fits.")
         is_ded = True
     if current_room == "fuel_plant":
-      ##3 choices, nothing can be done here
+      ##2 choices, nothing can be done here
       print("You head to the nexus of the fuel plant,\nand see that you could head to the refinery or the port.")
       print("What would you like to do?")
-      print("Actions Available: Refinery, Port, Tanks, Backward")
+      print("Actions Available: Refinery, Port, Backward")
       action = input(">>> ").lower()
       if action == "refinery":
         print("You head towards the refinery.")
@@ -256,7 +256,7 @@ while is_ded != True:
         if action == "look":
             print("You are within the engine room of the tanker.")
         elif action == "left":
-            print("You head over the the engine management console.")
+            print("You head over to the engine management console.")
             print("You have no idea what these buttons do, but you hit them anyway.")
             print("You hear an alarm go off nearby, and decide that its high time to get out of the engine room.")
             time.sleep(1)
@@ -273,9 +273,9 @@ while is_ded != True:
             print("You head back up to the top deck.")
             current_room = "tanker"
     if current_room == "refinery":
-        print("You see the hydrocarbon cracking column to your left, the control room to your right, and a Jeep in front of you.")
+        print("You see the control room to your right, and a Jeep in front of you.")
         print("What would you like to do?")
-        print("Actions Available: Left, Forward, Right, Look, Backward.")
+        print("Actions Available: Forward, Right, Look, Backward.")
         action = input(">>> ").lower()
         if action == "backward":
             print("You head back to the Nexus")
@@ -287,3 +287,58 @@ while is_ded != True:
             time.sleep(1)
             print("You Survived")
             is_ded = True
+        elif action == "look":
+            print("You are within a refinery unit.")
+        elif action == "right":
+            print("You head to the control room.")
+            current_room = "control"
+    if current_room == "control":
+        print("You see a control panel to your left, and a metering panel to your right.")
+        print("What would you like to do?")
+        print("Actions Available: Left, Right, Look, Backward")
+        action = input(">>>").lower()
+        if action == "push":
+            ##Easter Egg
+            print("You start pushing random buttons and turning random dials on the metering panel\nand find that the refinery outside is beginning to light on fire.")
+            time.sleep(1)
+            print("You realise that that is bad, and start running to that Jeep you saw earlier.")
+            time.sleep(1)
+            print("You get away in a nick of time.")
+            time.sleep(1)
+            print("You Survived", end ="")
+            time.sleep(1)
+            print(" barely.")
+            is_ded = True
+        elif action == "look":
+            print("You are in the control room for the refinery.")
+            print("You see a placard that says to not to Push any buttons, and the word Push seems to be prominent.")
+        elif action == "left":
+            print("You head over to the control panel, and turn the burners in the stack up to high.")
+            print("A worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+            print("You Died")
+            is_ded = True
+        elif action == "right":
+            print("You head over to the metering panel, and cut the flow to the tower.")
+            print("You see a worker approaching the control room.")
+            if has_knife == True:
+                print("As he approaches the room, you shove your knife between the door jamb and the handle.")
+                time.sleep(1)
+                print("The worker assumes that he must have locked the door, so he goes to get his keys.")
+                time.sleep(1)
+                print("As he leaves, you retrieve your knife and make your way to the Jeep.")
+                time.sleep(1)
+                print("You leave in the Jeep, and as your leaving the tower explodes.")
+                time.sleep(1)
+                print("Press any key to continue...")
+                time.sleep(2)
+                print("JK")
+                time.sleep(0.5)
+                print("You Survived")
+                is_ded = True
+            else:
+                print("A worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+                print("You Died")
+                is_ded = True
+        elif action == "backward":
+            current_room = "refinery"
+            print("You head back into the refinery.")
