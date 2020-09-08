@@ -10,6 +10,16 @@ fubar = False
 ##Sets the starting room
 current_room = "prison"
 
+
+##Void out function, when the player reaches an area that I havent coded yet.
+def voidout(action):
+    print(f"You step {action} and fall into the void, and you see a neon sign.")
+    time.sleep(0.5)
+    print("The sign says, YOU HAVE REACHED THE END OF THE CODED GAME")
+    time.sleep(0.5)
+    print("You have no idea what this means, but it doesn't sound good.")
+    time.sleep(0.5)
+    print("You died")
 ##Introduce the Story to the player
 print("Behind The Lines")
 time.sleep(0.5)
@@ -342,3 +352,51 @@ while is_ded != True:
         elif action == "backward":
             current_room = "refinery"
             print("You head back into the refinery.")
+    if current_room == "base_exit":
+        print("You see the gate ahead of you, the guard shack to your left, and a motorbike to your right.")
+        print("What would you like to do?")
+        print("Actions available: Forward, Left, Right, Backward")
+        action = input(">>> ").lower()
+        if action == "backward":
+            print("You head back to the prison block.")
+            current_room = "prison"
+        elif action == "right":
+            print("You head out to the motorbike, and you see that its engine is ripped to shreds.")
+            print("The guy who was working on it comes back and sees you.")
+            print("He knocks you over the head with a large spanner.")
+            print("You died")
+            is_ded = True
+        elif action == "left":
+            print("You head towards the guard shack.")
+            current_room = "guards"
+        elif action == "look":
+            print("You are at the exit to the enemy base.")
+        elif action == "forward":
+            print("You head towards the gate.")
+            current_room = "gate"
+    if current_room == "gate":
+        print("You see freedom ahead of you, and a guard to the side of you.")
+        print("Actions available: Forward, Left, Look, Backward")
+        action = input(">>> ").lower()
+        if action == "forward":
+            print("You head towards freedom, and you die in the desert on your way there.")
+            print("You died")
+            is_ded = True
+        elif action == "left":
+            voidout(action)
+            is_ded = True
+        elif action == "look":
+            print("You are at the exit gate to the enemy base, on the cusp on freedom.")
+        elif action == "backward":
+            print("You head back to the area with the motorbike.")
+            current_room = "base_exit"
+    if current_room == "guards":
+        print("You see... nothing, just a white room, with empty walls.")
+        print("Action available: backward")
+        action = input(">>> ").lower()
+        if action == "backward":
+            print("You leave for the exterior.")
+            time.sleep(1)
+            current_room = "base_exit"
+        else:
+            print("You should really just leave this accursed building.")
