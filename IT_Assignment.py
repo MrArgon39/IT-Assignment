@@ -56,10 +56,12 @@ while is_ded != True:
          current_room = "machine_shop"
          print("You head to the machine shop.")
       elif action == "look":
+          ##Check if they have either of the items
           if has_gun == False:
             if has_knife == False:
               print("You are within the armoury, and you see a gun and a knife.")
               choice = input("Which do you choose? ")
+              ##Give them an item
               if choice.lower() == "knife":
                 has_knife = True
                 print("You pick up the knife.")
@@ -72,6 +74,7 @@ while is_ded != True:
             print("You are within the armoury.")
             
       elif action == "plant charges":
+          ##Kaboom
           print("You plant the charges, but someone has closed the armoury door.")
           time.sleep(1)
           print("You Died")
@@ -82,12 +85,13 @@ while is_ded != True:
       print("Actions available: Left, Look, Right, Backward")
       action = input(">>> ").lower()
       if action == "left":
+          ##player killed by their stupidity
         print("You go through the door, and you realise that you have entered the breakroom. \nYou are discovered and shot.")
         time.sleep(1)
         print("You died.")
         is_ded = True
       elif action == "look":
-        print("You are in the machine hall, and you hear the sound of workers from the hall.")
+        print("You are in the machine hall, and you hear the sound of workers from the adjoining door.")
       elif action == "backward":
         print("You head back to the armoury.")
         current_room = "armoury"
@@ -157,6 +161,7 @@ while is_ded != True:
           print("You head back to the prison block.")
           current_room = "prison"
     if current_room == "port":
+      ##simple bool answers, only two choices
       print("You enter the port, and see an oil tanker docked at the port.")
       print("Do you want to board it?\nYes/No")
       action = input(">>> ").lower()
@@ -173,6 +178,7 @@ while is_ded != True:
                 print("You Survived")
                 is_ded = True
             else:
+                ##Non-deadly punishment
                 print("You climb aboard the boat, but realise that the keys are missing from the ignition.")
                 time.sleep(1)
                 print("The guard discovers you as he climbs back aboard, and takes you back to the prison.")
@@ -192,6 +198,7 @@ while is_ded != True:
                 print("You Died")
                 is_ded = True
     if current_room == "tanker":
+        ##If it ain't broke, break it
        if fubar == False:
           print("You have boarded the tanker right as it left port, and see the bridge to your right, the stairwell to the engine room to your left, and the lifeboats in front of you.")
           print("What would you like to do?")
@@ -266,6 +273,7 @@ while is_ded != True:
         if action == "look":
             print("You are within the engine room of the tanker.")
         elif action == "left":
+            ##You broke it
             print("You head over to the engine management console.")
             print("You have no idea what these buttons do, but you hit them anyway.")
             print("You hear an alarm go off nearby, and decide that its high time to get out of the engine room.")
@@ -324,7 +332,7 @@ while is_ded != True:
             print("You see a placard that says to not to Push any buttons, and the word Push seems to be prominent.")
         elif action == "left":
             print("You head over to the control panel, and turn the burners in the stack up to high.")
-            print("A worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+            print("A worker comes into the control room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
             print("You Died")
             is_ded = True
         elif action == "right":
@@ -337,7 +345,7 @@ while is_ded != True:
                 time.sleep(1)
                 print("As he leaves, you retrieve your knife and make your way to the Jeep.")
                 time.sleep(1)
-                print("You leave in the Jeep, and as your leaving the tower explodes.")
+                print("You leave in the Jeep, and as you're leaving the tower explodes.")
                 time.sleep(1)
                 print("Press any key to continue...")
                 time.sleep(2)
@@ -346,7 +354,7 @@ while is_ded != True:
                 print("You Survived")
                 is_ded = True
             else:
-                print("The worker comes into the contol room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+                print("The worker comes into the control room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
                 print("You Died")
                 is_ded = True
         elif action == "backward":
@@ -391,6 +399,7 @@ while is_ded != True:
             print("You head back to the area with the motorbike.")
             current_room = "base_exit"
     if current_room == "guards":
+        ##I ran out of time
         print("You see... nothing, just a white room, with empty walls.")
         print("Action available: backward")
         action = input(">>> ").lower()
