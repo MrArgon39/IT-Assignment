@@ -24,7 +24,7 @@ def voidout(action):
 print("Behind The Lines")
 time.sleep(0.5)
 print("You've just woken up from another day in the brig of the enemy POW base,\nbut today is like no other, as you see that someone has left the cell doors unlocked.")
-print("After exiting your cell,")
+print("After exiting your cell,",end=" ")
 while is_ded != True:   
     if current_room == "prison":
       print("You see the base armoury to your left, the fuel plant to the right, and the base exit in front of you.")
@@ -98,7 +98,9 @@ while is_ded != True:
       elif action == "right":
         ##Rick Rolled
         print("You head into the closet.")
+        time.sleep(1)
         print("You see a radio, that is currenty playing \nNever Gonna Give You Up by\nRick ASCII.")
+        time.sleep(1)
         print(""",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*(/((#####%%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&%&&&%%&&&%%%%%%%%%%%###%%%%%%%%%%###((******************
 ,*,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*/((((#####%%%%%%%%%&&&&&&&&&&&&&&&&&%%%%%%&&&%%%%%%%%%###########%#%%%%%%###(/******************
 ,*,,,,,,,,,,,,,,,,,,,,,,,,,,..,,..,,.,,,,,,,,,,,,,,,,,,*/(((((##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%######(((((((/////////((###%%#%%%###(/******************
@@ -144,6 +146,7 @@ while is_ded != True:
 ,,,,,,,,,,,,,,,**//((((######%%%%%%&&&&&&&&&&&&&&&&&&&&&&&&&&&%&&&#####%%##%%####(/((/(#################(///********(%%%%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&
 ,,,,,,,,,,,,/(((((#####%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&(####%%##%%####(/((/(##############((///**********/%%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&&&""")
         print("If this doesn't look right, expand the code window so that it fits.")
+        time.sleep(1)
         is_ded = True
     if current_room == "fuel_plant":
       ##2 choices, nothing can be done here
@@ -332,8 +335,11 @@ while is_ded != True:
             print("You see a placard that says to not to Push any buttons, and the word Push seems to be prominent.")
         elif action == "left":
             print("You head over to the control panel, and turn the burners in the stack up to high.")
+            time.sleep(1)
             print("A worker comes into the control room, and when he sees you, he proceeds to whack you over the head with a nearby shovel.")
+            time.sleep(1)
             print("You Died")
+            time.sleep(1)
             is_ded = True
         elif action == "right":
             print("You head over to the metering panel, and cut the flow to the tower.")
@@ -401,7 +407,7 @@ while is_ded != True:
     if current_room == "guards":
         ##I ran out of time
         print("You see... nothing, just a white room, with empty walls.")
-        print("Action available: backward")
+        print("Action available: Backward")
         action = input(">>> ").lower()
         if action == "backward":
             print("You leave for the exterior.")
